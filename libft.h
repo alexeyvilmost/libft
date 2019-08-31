@@ -6,7 +6,7 @@
 /*   By: pallspic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 20:42:22 by pallspic          #+#    #+#             */
-/*   Updated: 2019/07/07 15:24:35 by pallspic         ###   ########.fr       */
+/*   Updated: 2019/08/26 02:25:12 by pallspic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,78 @@
 # include <unistd.h>
 # include <string.h>
 
+/*
+** ==========================# My definitions #=================================
+*/
+
 # define TRUE 1
 # define FALSE 0
 # define ERROR -1
+
+typedef long double				t_ldouble;
+typedef const char*				t_cchar;
+typedef long long int			t_llong;
+typedef unsigned long int		t_ulong;
+typedef unsigned long long int	t_ullong;
+typedef unsigned short int		t_ushort;
+typedef unsigned int			t_uint;
+typedef unsigned char			t_uchar;
+typedef long double				t_dbl;
+
+/*
+** ==============================# My funcs: #==================================
+**
+** ft_abs - returns absolute value of int
+** ft_pow - raise number to a power
+** ft_strrev - replace input string to a reversed version
+** ft_strfchr - returns the position of first matching symbol
+*/
+
+t_ullong			ft_abs(long long n);
+char				*ft_get(int amount, int symbol);
+t_llong				ft_pow(t_llong to_raise, short power);
+long double			ft_pow_dbl(long double to_raise, short power);
+t_llong				ft_max(t_llong first_num, t_llong second_num);
+t_llong				ft_min(t_llong first_num, t_llong second_num);
+char				*ft_itoa_base(t_ullong num, t_ushort base, char letter);
+
+_Bool				ft_isspace(char c);
+_Bool				ft_isupper(int chr);
+_Bool				ft_islower(int chr);
+
+void				*ft_memsetloc(size_t size, int val);
+
+short				ft_nsize(t_ullong n);
+short				ft_nsize_base(t_ullong n, short base);
+t_ullong			ft_nmult(t_ullong n);
+t_ullong			ft_nmult_base(t_ullong n, short base);
+
+char				*ft_strrev(const char *str);
+int					ft_strfchr(const char *str, int to_find);
+char				*ft_strerase(t_cchar to_erase, int start_pos, int size);
+char				*ft_strjoinfree(char *s1, char *s2, t_llong am, char to_f);
+
+/*
+** ========================# Long math on strings #=============================
+*/
+
+size_t				ft_dot(const char *str);
+size_t				ft_adot(const char *str);
+char				*ft_biline(int power);
+int					ft_longcmp(const char *n1, const char *n2);
+char				*ft_nline(int pos, char *num, _Bool to_free);
+char				*ft_rm_dot(char	*str, _Bool to_free);
+char				*ft_put_dot(char *str, size_t where, _Bool to_free);
+
+char				*ft_long_mult(char *fst, char *snd);
+char				*ft_long_sum(char *main, char *add);
+char				*ft_long_diff(char *main, char *diff);
+char				*ft_long_div(char *first, char *second, short accur);
+char				*ft_long(char *f_num, char *s_num, char option, short to_f);
+
+/*
+** =======================# Standard functions: #===============================
+*/
 
 typedef struct		s_list
 {
@@ -27,26 +96,8 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
-/*
-** ------------------------------ My funcs: ----------------------------------
-** ft_abs - returns absolute value of int
-** ft_isspace - returns if character is separator or not
-** ft_strrev - replace input string to a reversed version
-** ft_strnchr - returns the position of first matching symbol
-*/
 
-int					ft_abs(int n);
-int					ft_isspace(char c);
-char				*ft_strrev(char *str);
-int					ft_strfchr(char *str, int to_find);
-char				*ft_strerase(const char *to_erase,
-								int start_pos, int size);
-
-/*
-** ----------------------- Standart functions: --------------------------------
-*/
-
-int					ft_atoi(const char *str);
+int					ft_atoi(t_cchar str);
 
 int					ft_isalnum(int ch);
 int					ft_isalpha(int ch);
@@ -54,13 +105,12 @@ int					ft_isascii(int ch);
 int					ft_isdigit(int ch);
 int					ft_isprint(int ch);
 
-char				*ft_itoa(int n);
+char				*ft_itoa(t_llong n);
 
 void				ft_bzero(void *point, size_t size);
 
 int					ft_memcmp(const void *mem1, const void *mem2, size_t size);
-void				*ft_memccpy(void *dest,
-								const void *src, int c, size_t size);
+void				*ft_memccpy(void *dst, const void *src, int c, size_t size);
 void				*ft_memalloc(size_t size);
 void				*ft_memcpy(void *dest, const void *src, size_t size);
 void				*ft_memset(void *point, int val, size_t size);
@@ -70,39 +120,39 @@ void				ft_memdel(void **ap);
 
 void				ft_putnbr(int n);
 void				ft_putchar(char c);
-void				ft_putstr(char const *s);
-void				ft_putendl(char const *s);
+void				ft_putstr(t_cchar s);
+void				ft_putendl(t_cchar s);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_putchar_fd(char c, int fd);
-void				ft_putstr_fd(char const *s, int fd);
-void				ft_putendl_fd(char const *s, int fd);
+void				ft_putstr_fd(t_cchar s, int fd);
+void				ft_putendl_fd(t_cchar s, int fd);
 
-int					ft_strcmp(const char *s1, const char *s2);
-int					ft_strncmp(const char *s1, const char *s2, size_t size);
-int					ft_strequ(char const *s, char const *s2);
-int					ft_strnequ(char const *s1, char const *s2, size_t n);
-char				*ft_strchr(const char *str, int to_find);
-char				*ft_strrchr(const char *str, int to_find);
-char				*ft_strcat(char *dest, const char *add);
-char				*ft_strncat(char *dest, const char *add, size_t size);
-char				*ft_strcpy(char *dest, const char *src);
-char				*ft_strncpy(char *dest, const char *src, size_t size);
-char				*ft_strmap(char const *s, char (*f)(char));
-char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+int					ft_strcmp(t_cchar s1, t_cchar s2);
+int					ft_strncmp(t_cchar s1, t_cchar s2, size_t size);
+int					ft_strequ(t_cchar s, t_cchar s2);
+int					ft_strnequ(t_cchar s1, t_cchar s2, size_t n);
+char				*ft_strchr(t_cchar str, int to_find);
+char				*ft_strrchr(t_cchar str, int to_find);
+char				*ft_strcat(char *dest, t_cchar add);
+char				*ft_strncat(char *dest, t_cchar add, size_t size);
+char				*ft_strcpy(char *dest, t_cchar src);
+char				*ft_strncpy(char *dest, t_cchar src, size_t size);
+char				*ft_strmap(t_cchar s, char (*f)(char));
+char				*ft_strmapi(t_cchar s, char (*f)(unsigned int, char));
 char				*ft_strnew(size_t size);
-char				*ft_strstr(const char *s1, const char *s2);
-char				*ft_strnstr(const char *s1, const char *s2, size_t size);
-char				*ft_strsub(char const *s1, unsigned int start, size_t len);
-char				*ft_strtrim(char const *s);
-char				**ft_strsplit(char const *s1, char c);
-char				*ft_strdup(const char *src);
-char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strstr(t_cchar s1, t_cchar s2);
+char				*ft_strnstr(t_cchar s1, t_cchar s2, size_t size);
+char				*ft_strsub(t_cchar s1, unsigned int start, size_t len);
+char				*ft_strtrim(t_cchar s);
+char				**ft_strsplit(t_cchar s1, char c);
+char				*ft_strdup(t_cchar src);
+char				*ft_strjoin(t_cchar s1, t_cchar s2);
 void				ft_striter(char *s, void (*f)(char *));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 void				ft_strclr(char *s);
 void				ft_strdel(char **as);
-size_t				ft_strlcat(char *dest, const char *stc, size_t size);
-size_t				ft_strlen(const char *str);
+size_t				ft_strlcat(char *dest, t_cchar stc, size_t size);
+size_t				ft_strlen(t_cchar str);
 
 int					ft_toupper(int ch);
 int					ft_tolower(int ch);

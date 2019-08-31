@@ -6,14 +6,16 @@
 /*   By: pallspic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 23:23:46 by pallspic          #+#    #+#             */
-/*   Updated: 2019/07/06 15:03:50 by pallspic         ###   ########.fr       */
+/*   Updated: 2019/08/26 02:25:12 by pallspic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isspace(char c)
+#include "libft.h"
+
+_Bool	ft_isspace(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n' || c == '\v'
 			|| c == '\f' || c == '\r')
-		return (1);
-	return (0);
+		return (TRUE);
+	return (FALSE);
 }

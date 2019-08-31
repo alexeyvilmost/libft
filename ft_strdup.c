@@ -6,7 +6,7 @@
 /*   By: pallspic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 18:40:16 by pallspic          #+#    #+#             */
-/*   Updated: 2019/07/06 15:03:50 by pallspic         ###   ########.fr       */
+/*   Updated: 2019/08/26 02:25:12 by pallspic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ char	*ft_strdup(const char *src)
 	char	*new;
 	size_t	size;
 
-	size = sizeof(char) * (ft_strlen(src) + 1);
-	if (!(new = (char *)malloc(size)))
+	if (!src)
+		return (ft_strnew(0));
+	size = ft_strlen(src);
+	if (!(new = ft_strnew(size)))
 		return (NULL);
 	ft_memcpy(new, src, size);
 	return (new);
