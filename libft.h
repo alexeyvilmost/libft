@@ -6,7 +6,7 @@
 /*   By: pallspic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 20:42:22 by pallspic          #+#    #+#             */
-/*   Updated: 2019/08/26 02:25:12 by pallspic         ###   ########.fr       */
+/*   Updated: 2019/08/31 15:20:02 by pallspic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <stdarg.h>
 
 /*
 ** ==========================# My definitions #=================================
@@ -85,6 +86,59 @@ char				*ft_long_sum(char *main, char *add);
 char				*ft_long_diff(char *main, char *diff);
 char				*ft_long_div(char *first, char *second, short accur);
 char				*ft_long(char *f_num, char *s_num, char option, short to_f);
+
+/*
+** =============================# get_next_line #===============================
+*/
+
+# define BUFF_SIZE 32
+
+int					get_next_line(const int fd, char **line);
+
+/*
+** ==============================# ft_printf #==================================
+*/
+
+# define B23 63
+# define B127 16383
+# define USIGN "uoxXp"
+# define O '0'
+
+typedef struct		s_type
+{
+	char			flag[3];
+	int				size;
+	int				accur;
+	char			type;
+	char			spec;
+	char			*line;
+	short			base;
+	_Bool			sign;
+	short			add;
+	size_t			len;
+	size_t			printed;
+}					t_type;
+
+typedef	union
+{
+	long double		main;
+	struct
+	{
+		t_ulong		mant : 63;
+		t_ushort	expo : 15;
+		_Bool		sign : 1;
+	}				memory;
+}					t_double;
+
+int					ft_printf(const char *format, ...);
+t_type				pf_put_c(t_type data, va_list arg);
+t_type				pf_put_s(t_type data, va_list arg);
+t_type				pf_put_f(t_type data, va_list arg);
+t_type				pf_put_n(t_type data, va_list arg, t_llong i, t_ullong n);
+void				pf_fill_n(t_type data, va_list arg, int printed);
+char				*pf_double_line(t_double db, int accur);
+t_type				pf_pre_put(t_type data, _Bool sign);
+size_t				pf_write(int symbol, size_t amount);
 
 /*
 ** =======================# Standard functions: #===============================

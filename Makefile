@@ -6,7 +6,7 @@
 #    By: pallspic <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 20:50:17 by pallspic          #+#    #+#              #
-#    Updated: 2019/08/26 02:25:12 by pallspic         ###   ########.fr        #
+#    Updated: 2019/08/31 15:15:53 by pallspic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,17 +22,65 @@ override CC = gcc
 
 NAME = libft.a
 
-SRC = ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
-	ft_isprint.c ft_isspace.c ft_itoa.c ft_bzero.c ft_memalloc.c ft_lstiter.c \
-	  ft_memcpy.c ft_memcmp.c ft_memset.c ft_memchr.c ft_memmove.c ft_memdel.c \
-	  ft_memccpy.c ft_putnbr.c ft_putchar.c ft_putstr.c ft_putendl.c \
-	  ft_putnbr_fd.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_lstmap.c \
-	  ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c ft_strrchr.c \
-	  ft_strclr.c ft_strcmp.c ft_strncmp.c ft_strcpy.c ft_strncpy.c ft_strsplit.c \
-	  ft_strdel.c ft_strdup.c ft_strequ.c ft_strnequ.c ft_striter.c \
-	  ft_striteri.c ft_strjoin.c ft_strlen.c ft_strmap.c ft_strmapi.c \
-	  ft_strnew.c ft_strstr.c ft_strnstr.c ft_strsub.c ft_strtrim.c \
-	  ft_toupper.c ft_tolower.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c \
+SRC = ft_base_funcs/ft_atoi.c \
+	  ft_base_funcs/ft_isalnum.c \
+	  ft_base_funcs/ft_isalpha.c \
+	  ft_base_funcs/ft_isascii.c \
+	  ft_base_funcs/ft_isdigit.c \
+	  ft_base_funcs/ft_isprint.c \
+	  ft_base_funcs/ft_isspace.c \
+	  ft_base_funcs/ft_itoa.c \
+	  ft_base_funcs/ft_bzero.c \
+	  ft_base_funcs/ft_memalloc.c \
+	  ft_base_funcs/ft_lstiter.c \
+	  ft_base_funcs/ft_memcpy.c \
+	  ft_base_funcs/ft_memcmp.c \
+	  ft_base_funcs/ft_memset.c \
+	  ft_base_funcs/ft_memchr.c \
+	  ft_base_funcs/ft_memmove.c \
+	  ft_base_funcs/ft_memdel.c \
+	  ft_base_funcs/ft_memccpy.c \
+	  ft_base_funcs/ft_putnbr.c \
+	  ft_base_funcs/ft_putchar.c \
+	  ft_base_funcs/ft_putstr.c \
+	  ft_base_funcs/ft_putendl.c \
+	  ft_base_funcs/ft_putnbr_fd.c \
+	  ft_base_funcs/ft_putchar_fd.c \
+	  ft_base_funcs/ft_putstr_fd.c \
+	  ft_base_funcs/ft_putendl_fd.c \
+	  ft_base_funcs/ft_lstmap.c \
+	  ft_base_funcs/ft_strcat.c \
+	  ft_base_funcs/ft_strncat.c \
+	  ft_base_funcs/ft_strlcat.c \
+	  ft_base_funcs/ft_strchr.c \
+	  ft_base_funcs/ft_strrchr.c \
+	  ft_base_funcs/ft_strclr.c \
+	  ft_base_funcs/ft_strcmp.c \
+	  ft_base_funcs/ft_strncmp.c \
+	  ft_base_funcs/ft_strcpy.c \
+	  ft_base_funcs/ft_strncpy.c \
+	  ft_base_funcs/ft_strsplit.c \
+	  ft_base_funcs/ft_strdel.c \
+	  ft_base_funcs/ft_strdup.c \
+	  ft_base_funcs/ft_strequ.c \
+	  ft_base_funcs/ft_strnequ.c \
+	  ft_base_funcs/ft_striter.c \
+	  ft_base_funcs/ft_striteri.c \
+	  ft_base_funcs/ft_strjoin.c \
+	  ft_base_funcs/ft_strlen.c \
+	  ft_base_funcs/ft_strmap.c \
+	  ft_base_funcs/ft_strmapi.c \
+	  ft_base_funcs/ft_strnew.c \
+	  ft_base_funcs/ft_strstr.c \
+	  ft_base_funcs/ft_strnstr.c \
+	  ft_base_funcs/ft_strsub.c \
+	  ft_base_funcs/ft_strtrim.c \
+	  ft_base_funcs/ft_toupper.c \
+	  ft_base_funcs/ft_tolower.c \
+	  ft_base_funcs/ft_lstnew.c \
+	  ft_base_funcs/ft_lstdelone.c \
+	  ft_base_funcs/ft_lstdel.c \
+	  ft_base_funcs/ft_lstadd.c \
 	  ft_extra_funcs/ft_strrev.c \
 	  ft_extra_funcs/ft_strfchr.c \
 	  ft_extra_funcs/ft_strerase.c \
@@ -53,7 +101,11 @@ SRC = ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 	  ft_long_math/ft_long_sum.c \
 	  ft_long_math/ft_long_utils.c \
 	  ft_long_math/ft_make_nline.c \
-	  ft_long_math/ft_long_mult.c
+	  ft_long_math/ft_long_mult.c \
+	  ft_printf/ft_printf.c \
+	  ft_printf/parsers.c \
+	  ft_printf/utilities.c \
+	  get_next_line/get_next_line.c
 
 OBJ = $(SRC:.c=.o)
 
